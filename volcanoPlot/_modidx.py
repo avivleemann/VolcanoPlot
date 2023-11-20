@@ -5,8 +5,5 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://avivleemann.github.io',
                 'git_url': 'https://github.com/avivleemann/volcanoPlot',
                 'lib_path': 'volcanoPlot'},
-  'syms': { 'volcanoPlot.core': {'volcanoPlot.core.foo': ('core.html#foo', 'volcanoPlot/core.py')},
-            'volcanoPlot.volcanoPlot': { 'volcanoPlot.volcanoPlot.VolcanoPlot': ( 'volcanoplot.html#volcanoplot',
-                                                                                  'volcanoPlot/volcanoPlot.py'),
-                                         'volcanoPlot.volcanoPlot.assign_sig': ( 'volcanoplot.html#assign_sig',
-                                                                                 'volcanoPlot/volcanoPlot.py')}}}
+  'syms': { 'volcanoPlot.volcano': { 'volcanoPlot.volcano.assign_sig': ('volcanoplot.html#assign_sig', 'volcanoPlot/volcano.py'),
+                                     'volcanoPlot.volcano.plot': ('volcanoplot.html#plot', 'volcanoPlot/volcano.py')}}}
