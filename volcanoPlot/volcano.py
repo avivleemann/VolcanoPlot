@@ -15,7 +15,7 @@ PandasDataFrame = TypeVar('pandas.core.frame.DataFrame')
 
 # %% ../nbs/00_volcanoPlot.ipynb 5
 #| code_fold: True
-def assign_sig(p_value : int, log2FC: int, pvalue_cutoff: float=0.05 , log2FC_cutoff: int=2 ) -> str:
+def assign_sig(p_value : int, log2FC: int, pvalue_cutoff: float=0.05 , log2FC_cutoff: float=2 ) -> str:
 
    if p_value < pvalue_cutoff and abs(log2FC) > log2FC_cutoff :
       return 'log2FC and p_value'
@@ -29,18 +29,18 @@ def assign_sig(p_value : int, log2FC: int, pvalue_cutoff: float=0.05 , log2FC_cu
 
 # %% ../nbs/00_volcanoPlot.ipynb 7
 #| code_fold: True
-def plot(df: PandasDataFrame, x: str = 'log2FC', y: str = 'log10p', 
+def plot(df: PandasDataFrame, x: str = 'log2FC', y: str = 'log10p', pvalue_cutoff: float = 0.5,log2FC_cutoff: float = 2,
                 xline_color: str = 'grey', yline_color: str = 'grey', line_style: str = '--',
                 loc: str = 'upper left', bbox_to_anchor: Optional[tuple] = (0.3, 1),
-                figsize: tuple = (8, 8), axline: float = 2, title: str = "Volcano Plot",
-                top_n: int = 10, save_path: Optional[str] = None,dpi: int=300 , **kwargs) -> None:
+                figsize: tuple = (8, 8),  title: str = "Volcano Plot", top_n: int = 10,
+                save_path: Optional[str] = None,dpi: int=300 , **kwargs) -> None:
 
 
     if 'assignSig' not in df.columns:
-        df['assignSig'] = df.apply(lambda row: assign_sig(row['p_value'], row['log2FC']), axis=1)
+        df['assignSig'] = df.apply(lambda row: assign_sig(row['p_value'], row['log2FC'],pvalue_cutoff,log2FC_cutoff), axis=1)
     else:
         df = df.assign( assignSig_old = df['assignSig'],
-                        assignSig = df.apply(lambda row: assign_sig(row['p_value'], row['log2FC']), axis=1))
+                        assignSig = df.apply(lambda row: assign_sig(row['p_value'], row['log2FC'],pvalue_cutoff,log2FC_cutoff), axis=1))
 
     plt.figure(figsize=figsize)
     plt.scatter(x=df[x], y=df[y], s=1, label="Not significant", color="grey", alpha=0.5, **kwargs)
@@ -63,9 +63,9 @@ def plot(df: PandasDataFrame, x: str = 'log2FC', y: str = 'log10p',
     plt.xlabel(x)
     plt.ylabel(y)
     plt.title(title)
-    plt.axvline(-axline, color=xline_color, linestyle=line_style)
-    plt.axvline(axline, color=xline_color, linestyle=line_style)
-    plt.axhline(-np.log10(0.05), color=yline_color, linestyle=line_style)
+    plt.axvline(-log2FC_cutoff, color=xline_color, linestyle=line_style)
+    plt.axvline(log2FC_cutoff, color=xline_color, linestyle=line_style)
+    plt.axhline(-np.log10(pvalue_cutoff), color=yline_color, linestyle=line_style)
     plt.legend(loc=loc, bbox_to_anchor=bbox_to_anchor)
 
     if save_path:
