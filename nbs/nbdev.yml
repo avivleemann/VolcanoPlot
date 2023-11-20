@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "volcanoPlot"
+  site-url: "https://avivleemann.github.io/volcanoPlot"
+  description: "creating a volcano plot in python for the given data, and save it as a png file."
+  repo-branch: main
+  repo-url: "https://github.com/avivleemann/volcanoPlot"
