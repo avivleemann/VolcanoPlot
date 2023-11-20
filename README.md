@@ -13,8 +13,6 @@ pip install volcanoPlot
 
 ## How to use
 
-# Example
-
 ``` markdown
 Description:
 RSV or RS virus, short for respiratory syncytial virus, is a single-stranded RNA virus belonging to the pneumovirus genus of the virus family.
