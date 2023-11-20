@@ -18,6 +18,10 @@ PandasDataFrame = TypeVar('pandas.core.frame.DataFrame')
 #| code_fold: True
 #| code_fold: True
 #| code_fold: True
+#| code_fold: True
+#| code_fold: True
+#| code_fold: True
+#| code_fold: True
 def assign_sig(p_value : int, log2FC: int, pvalue_cutoff: float=0.05 , log2FC_cutoff: int=2 ) -> str:
 
    if p_value < pvalue_cutoff and abs(log2FC) > log2FC_cutoff :
@@ -31,6 +35,10 @@ def assign_sig(p_value : int, log2FC: int, pvalue_cutoff: float=0.05 , log2FC_cu
 
 
 # %% ../nbs/00_volcanoPlot.ipynb 7
+#| code_fold: True
+#| code_fold: True
+#| code_fold: True
+#| code_fold: True
 #| code_fold: True
 #| code_fold: True
 #| code_fold: True

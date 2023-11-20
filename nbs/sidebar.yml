@@ -3,3 +3,7 @@ website:
     contents:
       - index.ipynb
       - 00_volcanoPlot.ipynb
+      - nbdev.yml
+      - res_example.csv
+      - sidebar.yml
+      - styles.css
