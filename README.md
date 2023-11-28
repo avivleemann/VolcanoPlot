@@ -5,6 +5,8 @@
 This file will become your README and also the index of your
 documentation.
 
+package website url: https://avivleemann.github.io/volcanoPlot/
+
 ## Install
 
 ``` sh
@@ -55,8 +57,8 @@ df.head()
 </div>
 
 ``` python
-from volcanoPlot.volcano import *
-plot(df=df,x='log2FC', y ='log10p')
+from volcanoPlot import volcano
+volcano.plot(df=df,x='log2FC', y ='log10p')
 ```
 
 ![](index_files/figure-commonmark/cell-3-output-1.png)
